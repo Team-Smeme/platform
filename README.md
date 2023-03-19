@@ -14,8 +14,8 @@ serviceLess platform
 
 
 # Writing place
-### 정의
 **writer (글쓴이)** 가 작성한 **writing (글)** 를 다룬다.
+- [설계](https://github.com/Team-Smeme/platform/wiki/Writing#%EC%84%A4%EA%B3%84)
 
 #### 제공하는 기능
 - [simpel CRUD](https://github.com/Team-Smeme/platform/wiki/Writing#%EA%B8%B0%EB%8A%A5)
