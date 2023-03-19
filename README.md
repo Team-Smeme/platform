@@ -13,14 +13,11 @@ serviceLess platform
 - Account N : 1 User
 
 
-# Posting place
+# Writing place
 ### 정의
-**writer (글쓴이)** 가 작성한 **content (글)** 를 다룬다.
+**writer (글쓴이)** 가 작성한 **writing (글)** 를 다룬다.
 
 #### 제공하는 기능
-#### 1. content CRUD
-- text only
-- 이후 media content 로 확장
-
-#### 2. comment CRUD
-2+ depth 댓글 가능 (댓글, 대댓글, 대대댓글,..)
+- [simpel CRUD](https://github.com/Team-Smeme/platform/wiki/Writing#%EA%B8%B0%EB%8A%A5)
+- [comment C](https://github.com/Team-Smeme/platform/wiki/Writing#depth-crud)
+  - 2+ depth 글 기능 (댓글, 대댓글, 대대댓글, ... )
