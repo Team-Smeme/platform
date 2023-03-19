@@ -25,7 +25,7 @@ subprojects {
 
     dependencies {
         annotationProcessor( "org.springframework.boot:spring-boot-configuration-processor")
-        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
         implementation("org.springframework.boot:spring-boot-starter-validation")
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -33,9 +33,7 @@ subprojects {
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-        runtimeOnly("com.h2database:h2")
-        runtimeOnly("com.mysql:mysql-connector-j")
-        runtimeOnly("io.r2dbc:r2dbc-h2")
+
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testImplementation("io.projectreactor:reactor-test")
     }

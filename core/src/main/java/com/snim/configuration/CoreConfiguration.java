@@ -1,5 +1,6 @@
 package com.snim.configuration;
 
+import com.snim.configuration.cassandra.SessionConfiguration;
 import com.snim.configuration.jdbc.DataSourceConfiguration;
 import com.snim.core.CoreBasePackage;
 import com.snim.configuration.cassandra.CassandraConfiguration;
@@ -14,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Import({
         DisableAutoConfiguration.class,
         DataSourceConfiguration.class,
+        SessionConfiguration.class,
         CassandraConfiguration.class
 })
 @ComponentScan(basePackageClasses = CoreBasePackage.class)
