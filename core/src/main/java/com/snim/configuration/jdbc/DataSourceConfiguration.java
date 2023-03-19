@@ -32,7 +32,7 @@ public class DataSourceConfiguration implements SeparatedProfileConfigurable<Dat
             // embeddedDatabaseFactory.setDatabaseName(h2Properties.getDbName());
             embeddedDatabaseFactory.setDatabaseType(EmbeddedDatabaseType.H2);
             return embeddedDatabaseFactory;
-        }
+        }wefwef
     }
 
     private static class MySqlFactory {
