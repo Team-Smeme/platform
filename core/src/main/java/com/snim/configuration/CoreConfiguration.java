@@ -1,6 +1,5 @@
 package com.snim.configuration;
 
-import com.snim.configuration.jdbc.DataSourceConfiguration;
 import com.snim.core.CoreBasePackage;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Configuration
 @Import({
         DisableAutoConfiguration.class,
-        DataSourceConfiguration.class,
+        DataSourcesConfiguration.class,
         CassandraSessionsConfiguration.class
 })
 @ComponentScan(basePackageClasses = CoreBasePackage.class)
