@@ -13,7 +13,7 @@ tasks.named<Jar>("jar") {
 }
 
 dependencies {
-    implementation("org.springframework.data:spring-data-cassandra:4.0.3")
+    implementation("org.springframework.data:spring-data-cassandra:3.4.9")
     implementation("org.cassandraunit:cassandra-unit:4.3.1.0")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("com.h2database:h2")
