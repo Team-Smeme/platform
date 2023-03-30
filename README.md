@@ -7,8 +7,27 @@ serviceLess platform
 ## How to use
 - service token 을 발급받는다.
 
+# Notification place
+특정 target 에 대해 알림을 발송한다.
+
+### Notification Type
+- **Cycle**
+  - 주기 알림
+  - 특정 요일, 특정 시간에 대한 알림
+  - `SelfPush` : 등록된 주기에 맞춰 자동 발송
+- **Topic**
+  - 토픽 알림
+  - 특정 토픽에 의존있는 대상들에대한 알림
+    - 글을 작성하면 구독자들에게 일괄 알림 (topic : 글 작성자)
+    - 이벤트 참여자들에게 일괄 알림 (topic : 이벤트)
+    - 광고 수신 동의한 대상에게 일괄 알림 (topic : 광고)
+  - `PassivePush` : api call 에 의한 푸시  
+- **Single**
+  - 단독 알림
+  - 특정 대상에게 단독으로 알림 발송
+  - `PassivePush` : api call 에 의한 푸시
+  
 # Authentication place
-### 정의
 여러 **Account (계정)** 에 대해 **User (사용자)** 를 매핑해준다.  
 - Account N : 1 User
 
