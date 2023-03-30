@@ -10,6 +10,9 @@ serviceLess platform
 # Notification place
 특정 target 에 대해 알림을 발송한다.
 
+![스크린샷 2023-03-30 오후 11 32 00](https://user-images.githubusercontent.com/88091704/228869943-14371ddb-5f62-459e-9027-dc95e1dbbc99.png)
+
+
 ### Notification Type
 - **Cycle**
   - 주기 알림
