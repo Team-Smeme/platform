@@ -5,7 +5,8 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @Import({
-        com.snim.core.writing.CassandraConfiguration.class
+        com.snim.core.writing.CassandraConfiguration.class,
+        com.snim.core.notee.CassandraConfiguration.class
 })
 public class CassandraSessionsConfiguration {
 }

@@ -2,10 +2,10 @@ package com.snim.core.writing
 
 import com.snim.core.DepthBearing
 import com.snim.core.Partitioning
-import com.snim.core.SlotBased
+import com.snim.core.StringSlotBased
 import org.apache.commons.lang3.StringUtils
 
-interface WritingPartitioning : Partitioning, SlotBased, DepthBearing {
+interface WritingPartitioning : Partitioning, StringSlotBased, DepthBearing {
     fun getWriter(): String {
         if (StringUtils.countMatches(getPartitionId(), SEPARATOR) == 1) {
             return StringUtils.substring(getPartitionId(), indexOfSlot2WriterId() + 1)

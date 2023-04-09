@@ -1,4 +1,4 @@
-package com.snim.core.writing;
+package com.snim.core.notee;
 
 import com.snim.configuration.SeparatedProfileConfigurable;
 import org.springframework.context.annotation.Bean;
@@ -8,18 +8,18 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import javax.sql.DataSource;
 
-@Configuration(value = "writingDataSourceConfiguration")
+@Configuration(value = "noteeDataSourceConfiguration")
 public class DataSourceConfiguration implements SeparatedProfileConfigurable<DataSource> {
-    private static final String WRITING_DATA_SOURCE_BEAN = "writingDataSourceBean";
+    private static final String NOTEE_DATA_SOURCE_BEAN = "noteeDataSourceBean";
 
     @Override
-    @Bean(WRITING_DATA_SOURCE_BEAN)
+    @Bean(NOTEE_DATA_SOURCE_BEAN)
     public DataSource embedded() {
         return H2Factory.embeddedDatabaseFactory().getDatabase();
     }
 
     @Override
-    @Bean(WRITING_DATA_SOURCE_BEAN)
+    @Bean(NOTEE_DATA_SOURCE_BEAN)
     public DataSource remote() {
         return null;
     }
@@ -28,7 +28,7 @@ public class DataSourceConfiguration implements SeparatedProfileConfigurable<Dat
         private static EmbeddedDatabaseFactory embeddedDatabaseFactory() {
             EmbeddedDatabaseFactory embeddedDatabaseFactory = new EmbeddedDatabaseFactory();
 
-            embeddedDatabaseFactory.setDatabaseName("writing");
+            embeddedDatabaseFactory.setDatabaseName("notee");
             embeddedDatabaseFactory.setDatabaseType(EmbeddedDatabaseType.H2);
             return embeddedDatabaseFactory;
         }
