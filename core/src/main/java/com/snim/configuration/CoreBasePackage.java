@@ -1,4 +1,4 @@
-package com.snim.core;
+package com.snim.configuration;
 
 public @interface CoreBasePackage {
 }
