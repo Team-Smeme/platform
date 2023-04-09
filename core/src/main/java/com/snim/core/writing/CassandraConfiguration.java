@@ -1,6 +1,7 @@
 package com.snim.core.writing;
 
 import com.datastax.oss.driver.api.core.CqlSession;
+import com.google.common.collect.Lists;
 import com.snim.configuration.CassandraSeparatedProfileConfigurable;
 import org.cassandraunit.CQLDataLoader;
 import org.cassandraunit.dataset.cql.ClassPathCQLDataSet;
@@ -9,12 +10,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.cassandra.config.CassandraEntityClassScanner;
 import org.springframework.data.cassandra.config.CqlSessionFactoryBean;
 import org.springframework.data.cassandra.config.SchemaAction;
 import org.springframework.data.cassandra.config.SessionFactoryFactoryBean;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.data.cassandra.core.CassandraTemplate;
 import org.springframework.data.cassandra.core.convert.CassandraConverter;
+import org.springframework.data.cassandra.core.convert.CassandraCustomConversions;
 import org.springframework.data.cassandra.core.convert.MappingCassandraConverter;
 import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.core.mapping.NamingStrategy;
@@ -52,9 +55,10 @@ public class CassandraConfiguration implements CassandraSeparatedProfileConfigur
 
     @Bean(WRITING_CASSANDRA_MAPPING_CONTEXT)
     @Primary
-    public CassandraMappingContext cassandraMappingContext() {
+    public CassandraMappingContext cassandraMappingContext() throws ClassNotFoundException {
         CassandraMappingContext cassandraMappingContext = new CassandraMappingContext();
 
+        cassandraMappingContext.setInitialEntitySet(CassandraEntityClassScanner.scan(WritingCorePackage.class));
         cassandraMappingContext.setNamingStrategy(NamingStrategy.SNAKE_CASE);
         cassandraMappingContext.setSimpleTypeHolder(SimpleTypeHolder.DEFAULT);
 
@@ -66,7 +70,15 @@ public class CassandraConfiguration implements CassandraSeparatedProfileConfigur
     public CassandraConverter cassandraConverter(
             @Qualifier(WRITING_CASSANDRA_MAPPING_CONTEXT) CassandraMappingContext cassandraMappingContext
     ) {
-        return new MappingCassandraConverter(cassandraMappingContext);
+        MappingCassandraConverter mappingCassandraConverter = new MappingCassandraConverter(cassandraMappingContext);
+        mappingCassandraConverter.setCustomConversions(new CassandraCustomConversions(
+                Lists.newArrayList(
+                        new WritingData2JsonConverter(),
+                        new Json2WritingDataConverter()
+                )
+        ));
+
+        return mappingCassandraConverter;
     }
 
     @Bean(WRITING_SESSION_FACTORY_FACTORY_BEAN)

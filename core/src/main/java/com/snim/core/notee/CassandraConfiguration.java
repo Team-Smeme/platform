@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.cassandra.config.CassandraEntityClassScanner;
 import org.springframework.data.cassandra.config.CqlSessionFactoryBean;
 import org.springframework.data.cassandra.config.SchemaAction;
 import org.springframework.data.cassandra.config.SessionFactoryFactoryBean;
@@ -52,9 +53,10 @@ public class CassandraConfiguration implements CassandraSeparatedProfileConfigur
 
     @Bean(NOTEE_CASSANDRA_MAPPING_CONTEXT)
     @Primary
-    public CassandraMappingContext cassandraMappingContext() {
+    public CassandraMappingContext cassandraMappingContext() throws ClassNotFoundException {
         CassandraMappingContext cassandraMappingContext = new CassandraMappingContext();
 
+        cassandraMappingContext.setInitialEntitySet(CassandraEntityClassScanner.scan(NoteeCorePackage.class));
         cassandraMappingContext.setNamingStrategy(NamingStrategy.SNAKE_CASE);
         cassandraMappingContext.setSimpleTypeHolder(SimpleTypeHolder.DEFAULT);
 
